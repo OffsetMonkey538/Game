@@ -17,6 +17,9 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+
+      - run: dotnet tool install Chickensoft.GodotEnv
+      - run: godotenv addons install
       
       - name: export
         id: export
