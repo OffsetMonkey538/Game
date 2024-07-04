@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2n8pu88uel4m"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_5wop2"]
+[ext_resource type="Texture2D" uid="uid://cmi530xpkjjs2" path="res://Assets/Textures/Sprites/Enemy.png" id="2_c1sb3"]
+[ext_resource type="PackedScene" uid="uid://dnwr0eofwpm4w" path="res://Scenes/health_bar.tscn" id="3_5veov"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mced2"]
+radius = 4.5
+height = 9.5
+
+[node name="Enemy" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_5wop2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.57079
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_c1sb3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+scale = Vector2(3.5, 3.5)
+shape = SubResource("CapsuleShape2D_mced2")
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_5veov")]
+z_index = 1
+offset_left = -28.0
+offset_top = -32.0
+offset_right = 28.0
+offset_bottom = -24.0
+grow_horizontal = 1
+grow_vertical = 1
+pivot_offset = Vector2(28, 32)
+target = NodePath("..")
+
+[connection signal="area_entered" from="." to="." method="onPlayerHit"]

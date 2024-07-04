@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://blhva6sru1yxl"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_6uyxn"]
+[ext_resource type="Texture2D" uid="uid://bx5leal2gcyyt" path="res://Assets/Textures/GUI/Joystick/Outline.png" id="2_wdjxv"]
+[ext_resource type="Texture2D" uid="uid://dhunw3yxds5pm" path="res://Assets/Textures/GUI/Joystick/Tip.png" id="3_eo01q"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="LeftJoystick" parent="." instance=ExtResource("1_6uyxn")]
+anchors_preset = -1
+anchor_top = 0.0
+anchor_right = 0.5
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+deadzone_size = 3.0
+clampzone_size = 28.0
+joystick_mode = 1
+visibility_mode = 2
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[node name="Base" parent="LeftJoystick" index="0"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+pivot_offset = Vector2(48, 48)
+texture = ExtResource("2_wdjxv")
+
+[node name="Tip" parent="LeftJoystick/Base" index="0"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+pivot_offset = Vector2(48, 48)
+texture = ExtResource("3_eo01q")
+
+[node name="RightJoystick" parent="." instance=ExtResource("1_6uyxn")]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 1.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+deadzone_size = 3.0
+clampzone_size = 28.0
+joystick_mode = 1
+visibility_mode = 2
+action_left = "look_left"
+action_right = "look_right"
+action_up = "look_up"
+action_down = "look_down"
+
+[node name="Base" parent="RightJoystick" index="0"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+pivot_offset = Vector2(48, 48)
+texture = ExtResource("2_wdjxv")
+
+[node name="Tip" parent="RightJoystick/Base" index="0"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+pivot_offset = Vector2(48, 48)
+texture = ExtResource("3_eo01q")
+
+[editable path="LeftJoystick"]
+[editable path="RightJoystick"]
