@@ -9,10 +9,10 @@
 
 [node name="Player" parent="." instance=ExtResource("5_ocnwg")]
 
-[node name="EnemySpawner" parent="Player" node_paths=PackedStringArray("Target", "Level") instance=ExtResource("2_e52j3")]
-Enemy = ExtResource("3_kuuil")
-Target = NodePath("..")
-Level = NodePath("../..")
+[node name="EnemySpawner" parent="Player" node_paths=PackedStringArray("target", "level") instance=ExtResource("2_e52j3")]
+enemy = ExtResource("3_kuuil")
+target = NodePath("..")
+level = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="Player/EnemySpawner"]
 wait_time = 4.0
@@ -23,4 +23,4 @@ scroll_offset = Vector2(-104.657, 129.205)
 
 [node name="EntityManager" type="Node" parent="."]
 
-[connection signal="timeout" from="Player/EnemySpawner/Timer" to="Player/EnemySpawner" method="SpawnEnemies" binds= [9, 250.0]]
+[connection signal="timeout" from="Player/EnemySpawner/Timer" to="Player/EnemySpawner" method="spawnEnemies" binds= [9, 250.0]]
