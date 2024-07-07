@@ -6,7 +6,7 @@ const SeparationWeight : float = 0.6;
 const TargetWeight : float = 0.5;
 
 const MaxSpeed : float = 200;
-const MinSpeed : float = 190;
+const MinSpeed : float = 200;
 	
 var Target : Node2D;
 var direction : Vector2 = Vector2.RIGHT;
