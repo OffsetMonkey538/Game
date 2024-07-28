@@ -5,22 +5,29 @@ class_name HealthComponent extends Node
 @onready var health: float = max_health;
 
 var max_health_modifiers: Array = [];
+var is_dead = false;
 
 signal death;
 signal health_changed(old_value: float, new_value: float);
 signal max_health_changed(old_value: float, new_value: float);
 
 func damage(amount: float):
+	if is_dead: return;
+	
 	var old_health = health;
 	health -= amount;
 	
 	health_changed.emit(old_health, health);
 	if health > 0: return;
 	
-	get_parent().queue_free();
+	is_dead = true;
+	
+	call_deferred("_free_parent");
 	death.emit();
 
 func heal(amount: float):
+	if is_dead: return;
+	
 	var old_health = health;
 	health += amount;
 	if health > get_max_health(): health = get_max_health();
@@ -50,3 +57,7 @@ func set_max_health(amount: float):
 func get_max_health() -> float:
 	# TODO: Apply health modifiers, whatever those are
 	return max_health;
+
+func _free_parent():
+	get_parent().get_parent().remove_child(get_parent());
+	get_parent().free();

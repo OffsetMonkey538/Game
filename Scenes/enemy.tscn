@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2n8pu88uel4m"]
+[gd_scene load_steps=12 format=3 uid="uid://b2n8pu88uel4m"]
 
 [ext_resource type="Texture2D" uid="uid://cmi530xpkjjs2" path="res://Assets/Textures/Sprites/Enemy.png" id="2_c1sb3"]
 [ext_resource type="PackedScene" uid="uid://dnwr0eofwpm4w" path="res://Scenes/health_bar.tscn" id="3_5veov"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/velocity_component.gd" id="6_ve8ou"]
 [ext_resource type="Script" path="res://Scripts/hitbox_component.gd" id="7_ilybj"]
 [ext_resource type="Script" path="res://Scripts/grid_object_component.gd" id="7_wfhtc"]
+[ext_resource type="PackedScene" uid="uid://dr0bw6exgpsnu" path="res://Scenes/projectile_manager.tscn" id="8_5hrw0"]
+[ext_resource type="PackedScene" uid="uid://b2sdkbad4nebq" path="res://Scenes/simple_projectile_shooter.tscn" id="8_d473n"]
+[ext_resource type="Script" path="res://Scripts/loot_table_component.gd" id="10_m1js1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mced2"]
 radius = 4.5
@@ -49,6 +52,7 @@ script = ExtResource("7_wfhtc")
 
 [node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 0
+collision_mask = 2
 script = ExtResource("7_ilybj")
 health_component = NodePath("../HealthComponent")
 
@@ -56,3 +60,16 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(-1.5, 0)
 scale = Vector2(3.5, 3.5)
 shape = SubResource("CapsuleShape2D_mced2")
+
+[node name="ProjectileManager" parent="." instance=ExtResource("8_5hrw0")]
+
+[node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("8_d473n")]
+
+[node name="LootTableComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("10_m1js1")
+loot_table = {
+"coin": 50,
+"missing": 50
+}
+rolls = 3
+health_component = NodePath("../HealthComponent")

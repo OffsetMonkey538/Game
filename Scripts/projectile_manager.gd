@@ -1,12 +1,17 @@
 extends Node2D
 
-# Map of shooting interval (float) to List of first entry the time since last shoot (int) and rest ProjectileShooters
+# Map of shooting interval (float) to List of first entry the time since last shoot (float) and rest ProjectileShooters
 var projectile_shooters: Dictionary = {};
 
 @onready var shootTimer: Timer = $ShootTimer;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_children().all(func(child):
+		if not child is ProjectileShooter: return;
+		addProjectileShooter(child);
+	);
+	
 	shootTimer.timeout.connect(Callable(self, "timerTimeout"));
 	shootTimer.start();
 

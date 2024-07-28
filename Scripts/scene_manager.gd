@@ -1,11 +1,11 @@
 extends Node
 
-var current_scene = null;
+var current_scene: Node = null;
+var player: Node = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var root = get_node("/root/Main/World");
-	current_scene = root.get_child(0);
+	_deferred_goto_scene("res://Scenes/level.tscn");
 
 func goto_scene(path: String):
 	# This function will usually be called from a signal callback,
@@ -20,7 +20,7 @@ func goto_scene(path: String):
 	call_deferred("_deferred_goto_scene", path)
 
 func _deferred_goto_scene(path: String):
-	current_scene.free();
+	if current_scene: current_scene.free();
 	
 	var scene: Resource = ResourceLoader.load(path);
 	

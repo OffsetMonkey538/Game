@@ -8,6 +8,8 @@ func _process(_delta):
 	# TODO: DEBUG thing just to spawn enemies at will
 	if Input.is_action_just_pressed("ui_select"):
 		spawnEnemies(18, 250);
+	if Input.is_action_just_pressed("ui_right"):
+		spawnEnemies(1, 250);
 	pass
 
 func spawnEnemies(amount: int, radius: float):

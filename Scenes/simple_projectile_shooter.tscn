@@ -5,9 +5,6 @@
 
 [node name="SimpleProjectileShooter" type="Node2D"]
 script = ExtResource("1_q2xjb")
-damage = 200.0
-shootSpeedSeconds = 0.8
-projectileSpeed = 250.0
-projectileBaseCount = 36
-projectileMultishotRangeDegrees = 50.0
+projectileBaseCount = 144
+projectileMultishotRangeDegrees = 360.0
 projectileScene = ExtResource("2_qyu16")

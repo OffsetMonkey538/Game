@@ -1,9 +1,7 @@
 class_name ProjectileShooter extends Node2D
 
-@export var damage: float;
-@export var shootSpeedSeconds: float;
-@export var projectileSpeed: float;
-@export var projectileBaseCount: int;
+@export var shootSpeedSeconds: float = 1;
+@export var projectileBaseCount: int = 1;
 @export var projectileMultishotRangeDegrees: float = 20;
 @export var projectileScene: PackedScene;
 
@@ -20,10 +18,8 @@ func shootProjectiles():
 
 func shoot(rotation_offset: float):
 	var new_projectile = projectileScene.instantiate();
-	new_projectile.damage = damage;
 	
 	new_projectile.position = global_position;
 	new_projectile.rotation = global_rotation + rotation_offset;
-	new_projectile.direction = Vector2.RIGHT.rotated(new_projectile.rotation).normalized() * projectileSpeed;
 	
 	SceneManager.current_scene.add_child(new_projectile);

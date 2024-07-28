@@ -10,6 +10,7 @@ func _init():
 
 func hurtbox_entered(area: Area2D):
 	if not area is HurtboxComponent: return;
+	if get_parent().is_queued_for_deletion(): return;
 	
 	hit.emit(area);
 	
