@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dum1xkwip4mch"]
 
 [ext_resource type="Script" path="res://Scripts/dropped_item.gd" id="1_idmlj"]
-[ext_resource type="Texture2D" uid="uid://bkgq4um2nbodj" path="res://Assets/Textures/Item/missing.png" id="2_i0ld8"]
+[ext_resource type="Texture2D" uid="uid://bkgq4um2nbodj" path="res://Assets/Textures/missing.png" id="2_27jit"]
 [ext_resource type="Script" path="res://Scripts/hurtbox_component.gd" id="3_0cspp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqwvw"]
@@ -12,7 +12,7 @@ script = ExtResource("1_idmlj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -10
-texture = ExtResource("2_i0ld8")
+texture = ExtResource("2_27jit")
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
 collision_layer = 4

@@ -20,7 +20,7 @@ func goto_scene(path: String):
 	call_deferred("_deferred_goto_scene", path)
 
 func _deferred_goto_scene(path: String):
-	if current_scene: current_scene.free();
+	if current_scene: Utils.free_node(current_scene);
 	
 	var scene: Resource = ResourceLoader.load(path);
 	

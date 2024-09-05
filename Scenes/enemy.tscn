@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2n8pu88uel4m"]
+[gd_scene load_steps=13 format=3 uid="uid://b2n8pu88uel4m"]
 
 [ext_resource type="Texture2D" uid="uid://cmi530xpkjjs2" path="res://Assets/Textures/Sprites/Enemy.png" id="2_c1sb3"]
-[ext_resource type="PackedScene" uid="uid://dnwr0eofwpm4w" path="res://Scenes/health_bar.tscn" id="3_5veov"]
+[ext_resource type="Texture2D" uid="uid://ck6fp748sojeq" path="res://Assets/Textures/GUI/ProgressBar/health.png" id="2_dcq1i"]
+[ext_resource type="Script" path="res://Scripts/health_bar.gd" id="2_lpa6t"]
 [ext_resource type="Script" path="res://Scripts/health_component.gd" id="4_v1qa6"]
 [ext_resource type="Script" path="res://Scripts/pathfind_component.gd" id="5_xqv7b"]
 [ext_resource type="Script" path="res://Scripts/velocity_component.gd" id="6_ve8ou"]
@@ -22,15 +23,14 @@ rotation = 1.57079
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("2_c1sb3")
 
-[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_5veov")]
-z_index = 1
+[node name="HealthBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("health_component")]
 offset_left = -28.0
 offset_top = -32.0
 offset_right = 28.0
 offset_bottom = -24.0
-grow_horizontal = 1
-grow_vertical = 1
 pivot_offset = Vector2(28, 32)
+texture_progress = ExtResource("2_dcq1i")
+script = ExtResource("2_lpa6t")
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
@@ -69,7 +69,7 @@ shape = SubResource("CapsuleShape2D_mced2")
 script = ExtResource("10_m1js1")
 loot_table = {
 "coin": 50,
-"missing": 50
+"xp": 50
 }
 rolls = 3
 health_component = NodePath("../HealthComponent")

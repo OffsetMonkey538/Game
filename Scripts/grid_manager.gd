@@ -43,7 +43,7 @@ func getObjectsInRadius(origin: Vector2, radius: float) -> Array:
 
 func getNeighborVoxels(origin: Vector2i, radius: float) -> Array:
 	var offsetMonkey538: int = ceil(radius / GRID_SIZE);
-	# Array of grid key strings
+	# Array of grid key integers
 	var neighbors: Array = [];
 	
 	for dX in range(-offsetMonkey538, offsetMonkey538 + 1):
