@@ -22,8 +22,8 @@ func damage(amount: float):
 	
 	is_dead = true;
 	
-	call_deferred("_free_parent");
 	death.emit();
+	Utils.deferr_free_node(get_parent())
 
 func heal(amount: float):
 	if is_dead: return;
@@ -57,7 +57,3 @@ func set_max_health(amount: float):
 func get_max_health() -> float:
 	# TODO: Apply health modifiers, whatever those are
 	return max_health;
-
-func _free_parent():
-	get_parent().get_parent().remove_child(get_parent());
-	get_parent().free();

@@ -1,4 +1,5 @@
 extends TouchScreenButton
 
 func _on_pressed():
-	HudManager.set_InGameHUD_visible(!HudManager.is_InGameHUD_visible());
+	$/root/Main/World/Level/Player/EnemySpawner.spawnEnemies(18, 250);
+	#HudManager.set_InGameHUD_visible(!HudManager.is_InGameHUD_visible());
