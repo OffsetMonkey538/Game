@@ -18,7 +18,7 @@ func addObjectTo(object: GridObjectComponent, gridKey: int):
 
 
 func removeObject(object: GridObjectComponent):
-	removeObjectFrom(object, object.toGridKey());
+	removeObjectFrom(object, object.lastGridKey);
 
 func removeObjectFrom(object: GridObjectComponent, gridKey: int):
 	var objectArray: Array = grid.get(gridKey, []);
