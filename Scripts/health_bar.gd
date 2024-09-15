@@ -21,7 +21,13 @@ func _ready():
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER;
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER;
 	label.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY;
-	label.scale = Vector2(0.3, 0.3);
+	label.label_settings = LabelSettings.new();
+	label.label_settings.font_size = 64;
+	#label.scale = Vector2(0.15, 0.15)
+	label.scale = Vector2(0.00125, 0.00125) * max(size.x, size.y);
+	#label.scale = Vector2(0.01, 0.01) * max(size.x, size.y);
+	#label.scale = Vector2(0.00625, 0.04375) * size;
+	#label.size = size / label.scale;
 	label.size = size / label.scale;
 	add_child(label);
 	
