@@ -23,7 +23,7 @@ rotation = 1.57079
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("2_c1sb3")
 
-[node name="HealthBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("health_component")]
+[node name="HealthBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("health_component", "velocity_component")]
 offset_left = -28.0
 offset_top = -32.0
 offset_right = 28.0
@@ -32,6 +32,7 @@ pivot_offset = Vector2(28, 32)
 texture_progress = ExtResource("2_dcq1i")
 script = ExtResource("2_lpa6t")
 health_component = NodePath("../HealthComponent")
+velocity_component = NodePath("../VelocityComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_v1qa6")

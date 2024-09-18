@@ -10,7 +10,7 @@ class_name PathfindComponent extends Node2D
 var target: Node2D;
 
 
-func _physics_process(_delta):
+func _process(_delta):
 	velocity_component.add_velocity(_calculateFlockDirection());
 
 func _calculateFlockDirection():

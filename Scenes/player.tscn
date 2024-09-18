@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/upgrade_manager.gd" id="5_xjq35"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itfrd"]
-radius = 9.5
-height = 19.0
+radius = 20.0
+height = 40.0
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_47u6i")

@@ -1,6 +1,7 @@
 class_name MyProgressBar extends TextureProgressBar
 
 @export var health_component: HealthComponent;
+@export var velocity_component: VelocityComponent;
 var label: Label;
 
 func _ready():
@@ -32,6 +33,8 @@ func _ready():
 	add_child(label);
 	
 	# Set up signals
+	if (velocity_component): velocity_component.position_changed.connect(_on_parent_pos_changed);
+	
 	if (health_component): health_component.health_changed.connect(_on_health_changed);
 	if (health_component): health_component.max_health_changed.connect(_on_max_health_changed);
 	
@@ -40,16 +43,12 @@ func _ready():
 		label.text = str(value);
 	);
 
+func _on_parent_pos_changed(rotation: float, _position: Vector2):
+	self.rotation = -rotation;
+
 func _on_health_changed(_old_health: float, health: float):
 	value = health;
 	label.text = str(value);
 
 func _on_max_health_changed(_old_max_health: float, max_health: float):
 	max_value = max_health;
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	rotation = -get_parent().rotation;
-	
-	#value = health_component.health / health_component.getMaxHealth();
-	#label.text = str(target.health);
