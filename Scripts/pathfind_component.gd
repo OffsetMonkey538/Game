@@ -2,8 +2,8 @@ class_name PathfindComponent extends Node2D
 
 @export var velocity_component: VelocityComponent;
 @export var grid_object_component: GridObjectComponent;
-@export var detection_distance: float = 35;
-@export var separation_distance: float = 25;
+@export var detection_distance: float = 60;
+@export var separation_distance: float = 40;
 @export var separation_weight: float = 0.6;
 @export var target_weight: float = 0.5;
 
@@ -11,7 +11,7 @@ var target: Node2D;
 
 
 func _process(_delta):
-	velocity_component.add_velocity(_calculateFlockDirection());
+	velocity_component.set_target(_calculateFlockDirection());
 
 func _calculateFlockDirection():
 	var thisGlobalPosition = global_position;
@@ -30,7 +30,8 @@ func _calculateFlockDirection():
 		
 		if distanceToFlockmate > detection_distance: continue;
 		
-		separation -= (flockmateGlobalPosition - thisGlobalPosition) * (separation_distance / distanceToFlockmate) * velocity_component.max_speed;
+		separation -= ((flockmateGlobalPosition - thisGlobalPosition).normalized() * velocity_component.max_speed * separation_distance) / distanceToFlockmate
+		#separation -= (flockmateGlobalPosition - thisGlobalPosition).normalized() * lerpf(0, velocity_component.max_speed, (separation_distance / distanceToFlockmate));
 	
 	targetVec = _get_target_velocity();
 		
@@ -41,7 +42,7 @@ func _calculateFlockDirection():
 	
 	return desiredDirection;
 	
-func _get_target_velocity():
+func _get_target_velocity() -> Vector2:
 	var desiredDirection = (target.global_position - global_position);
 		
-	return desiredDirection.normalized() * velocity_component.max_speed;
+	return desiredDirection * velocity_component.max_speed;

@@ -41,8 +41,6 @@ script = ExtResource("4_v1qa6")
 script = ExtResource("5_xqv7b")
 velocity_component = NodePath("../VelocityComponent")
 grid_object_component = NodePath("../GridObjectComponent")
-separation_weight = 0.5
-target_weight = 0.6
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("6_ve8ou")
