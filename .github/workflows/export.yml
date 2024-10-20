@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "GODOT_ANDROID_KEYSTORE_RELEASE_PATH=${{ github.workspace }}/misc/debug.keystore" >> $GITHUB_ENV
           echo "GODOT_ANDROID_KEYSTORE_RELEASE_USER=androiddebugkey" >> $GITHUB_ENV
-          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD=android >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD=android" >> $GITHUB_ENV
       
       - name: export
         id: export
