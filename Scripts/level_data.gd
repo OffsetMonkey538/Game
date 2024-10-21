@@ -3,6 +3,8 @@ extends Node
 var xp: int = 0;
 var xp_level: int = 0;
 
+var coins: int = 0;
+
 signal xp_changed(old_value: float, new_value: float);
 signal xp_level_changed(old_value: float, new_value: float);
 signal level_up();

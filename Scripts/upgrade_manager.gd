@@ -9,10 +9,15 @@ func _ready():
 
 func pickup_upgrade(upgradeBox: HurtboxComponent):
 	var upgrade: DroppedItem = upgradeBox.get_parent();
+	Utils.deferr_free_node(upgrade);
+	
 	if (upgrade.item_name == "xp"):
 		LevelData.add_xp(1);
+		return;
 	if (upgrade.item_name == "coin"):
 		#TODO: Increment some LevelData instead and once player dies, add that to the persistant PlayerData
-		PlayerData.get_data().money += 1;
+		LevelData.coins += 1;
+		return;
+	if (upgrade.item_name == "modifier"):
+		return;
 	
-	Utils.deferr_free_node(upgrade);
