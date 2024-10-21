@@ -18,12 +18,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://Scripts/scene_manager.gd"
-GridManager="*res://Scripts/grid_manager.gd"
-PlayerData="*res://Scripts/player_data.gd"
+SceneManager="*res://Scripts/level/level_manager.gd"
+GridManager="*res://Scripts/grid/grid_manager.gd"
+PlayerData="*res://Scripts/player/player_data.gd"
 Utils="*res://Scripts/utils.gd"
-LevelData="*res://Scripts/level_data.gd"
-HudManager="*res://Scripts/hud_manager.gd"
+LevelData="*res://Scripts/level/level_data.gd"
+HudManager="*res://Scripts/hud/hud_manager.gd"
 
 [display]
 

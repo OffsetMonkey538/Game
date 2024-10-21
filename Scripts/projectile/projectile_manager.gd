@@ -42,6 +42,6 @@ func timerTimeout():
 
 # TODO: Remove
 func testingThing():
-	var shooter: ProjectileShooter = preload("res://Scenes/simple_projectile_shooter.tscn").instantiate();
+	var shooter: ProjectileShooter = preload("res://Scenes/projectile/simple/simple_projectile_shooter.tscn").instantiate();
 	addProjectileShooter(shooter)
 	pass;

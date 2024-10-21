@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bgq2avo12efbn"]
 
-[ext_resource type="Texture2D" uid="uid://do1gcbj5xdoo7" path="res://Assets/Textures/Sprites/SimpleProjectile.png" id="1_p22en"]
-[ext_resource type="Script" path="res://Scripts/hurtbox_component.gd" id="3_5o8t3"]
-[ext_resource type="Script" path="res://Scripts/constant_movement_component.gd" id="3_vomrj"]
-[ext_resource type="Script" path="res://Scripts/despawn_timer.gd" id="4_fqhan"]
+[ext_resource type="Texture2D" uid="uid://do1gcbj5xdoo7" path="res://Assets/Textures/Sprites/SimpleProjectile.png" id="1_oxckl"]
+[ext_resource type="Script" path="res://Scripts/component/hithurt/hurtbox_component.gd" id="2_fegxy"]
+[ext_resource type="Script" path="res://Scripts/component/movement/constant_movement_component.gd" id="3_5330k"]
+[ext_resource type="Script" path="res://Scripts/component/timer/despawn_timer.gd" id="4_x3tiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwldm"]
 size = Vector2(6, 4)
@@ -11,21 +11,20 @@ size = Vector2(6, 4)
 [node name="SimpleProjectile" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_p22en")
+texture = ExtResource("1_oxckl")
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("3_5o8t3")
+script = ExtResource("2_fegxy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("RectangleShape2D_uwldm")
 
 [node name="ConstantMovementComponent" type="Node" parent="."]
-script = ExtResource("3_vomrj")
+script = ExtResource("3_5330k")
 speed = 250.0
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
-script = ExtResource("4_fqhan")
+script = ExtResource("4_x3tiv")

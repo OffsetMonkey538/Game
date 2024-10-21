@@ -1,6 +1,5 @@
 class_name MyProgressBar extends TextureProgressBar
 
-@export var health_component: HealthComponent;
 @export var velocity_component: VelocityComponent;
 var label: Label;
 
@@ -35,20 +34,14 @@ func _ready():
 	# Set up signals
 	if (velocity_component): velocity_component.position_changed.connect(_on_parent_pos_changed);
 	
-	if (health_component): health_component.health_changed.connect(_on_health_changed);
-	if (health_component): health_component.max_health_changed.connect(_on_max_health_changed);
-	
-	if (health_component): health_component.ready.connect(func():
-		value = health_component.health;
-		label.text = str(value);
-	);
+	process_mode = Node.PROCESS_MODE_DISABLED
 
-func _on_parent_pos_changed(rotation: float, _position: Vector2):
-	self.rotation = -rotation;
+func _on_parent_pos_changed(new_rotation: float, _position: Vector2):
+	self.rotation = -new_rotation;
 
-func _on_health_changed(_old_health: float, health: float):
-	value = health;
+func _on_value_changed(new_value: float):
+	value = new_value;
 	label.text = str(value);
 
-func _on_max_health_changed(_old_max_health: float, max_health: float):
-	max_value = max_health;
+func _on_max_value_changed(new_max_value: float):
+	max_value = new_max_value;

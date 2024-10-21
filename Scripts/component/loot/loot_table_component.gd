@@ -5,7 +5,7 @@ class_name LootTableComponent extends Node
 @export var rolls: int;
 @export var health_component: HealthComponent;
 
-var _dropped_item_scene: PackedScene = preload("res://Scenes/dropped_item.tscn");
+var _dropped_item_scene: PackedScene = preload("res://Scenes/item/dropped_item.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

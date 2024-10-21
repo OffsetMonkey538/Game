@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://v16cutj42oso"]
 
 [ext_resource type="Texture2D" uid="uid://bap8eby4mggdc" path="res://Assets/Textures/Sprites/Player.png" id="1_8dltt"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_47u6i"]
-[ext_resource type="PackedScene" uid="uid://dr0bw6exgpsnu" path="res://Scenes/projectile_manager.tscn" id="3_qpa60"]
-[ext_resource type="Script" path="res://Scripts/hitbox_component.gd" id="4_0qm6i"]
-[ext_resource type="Script" path="res://Scripts/upgrade_manager.gd" id="5_xjq35"]
+[ext_resource type="Script" path="res://Scripts/player/player.gd" id="1_47u6i"]
+[ext_resource type="PackedScene" uid="uid://dr0bw6exgpsnu" path="res://Scenes/projectile/projectile_manager.tscn" id="3_qpa60"]
+[ext_resource type="Script" path="res://Scripts/component/hithurt/hitbox_component.gd" id="4_0qm6i"]
+[ext_resource type="Script" path="res://Scripts/player/upgrade_manager.gd" id="5_xjq35"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itfrd"]
 radius = 20.0

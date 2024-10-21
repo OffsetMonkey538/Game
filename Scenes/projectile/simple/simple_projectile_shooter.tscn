@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2sdkbad4nebq"]
 
-[ext_resource type="Script" path="res://Scripts/projectile_shooter.gd" id="1_q2xjb"]
-[ext_resource type="PackedScene" uid="uid://bgq2avo12efbn" path="res://Scenes/simple_projectile.tscn" id="2_qyu16"]
+[ext_resource type="Script" path="res://Scripts/projectile/projectile_shooter.gd" id="1_q2xjb"]
+[ext_resource type="PackedScene" uid="uid://bgq2avo12efbn" path="res://Scenes/projectile/simple/simple_projectile.tscn" id="2_qyu16"]
 
 [node name="SimpleProjectileShooter" type="Node2D"]
 script = ExtResource("1_q2xjb")
