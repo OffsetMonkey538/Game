@@ -21,4 +21,4 @@ func spawnEnemies(amount: int, radius: float):
 		new_enemy.position = global_position + Vector2.UP.rotated(i * radians_per_enemy) * radius;
 		new_enemy.find_children("PathfindComponent").all(func(pathfind): pathfind.target = target);
 		
-		SceneManager.current_scene.add_child(new_enemy);
+		LevelManager.current_scene.add_child(new_enemy);

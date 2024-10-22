@@ -22,4 +22,4 @@ func shoot(rotation_offset: float):
 	new_projectile.position = global_position;
 	new_projectile.rotation = global_rotation + rotation_offset;
 	
-	SceneManager.current_scene.add_child(new_projectile);
+	LevelManager.current_scene.add_child(new_projectile);

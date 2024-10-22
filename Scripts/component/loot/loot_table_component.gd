@@ -12,12 +12,11 @@ func _ready():
 	health_component.death.connect(Callable(self, "drop_items"));
 
 func drop_items():
-	print("drop items called")
 	var total_chance: int = _get_total_chance();
 	
 	for i in range(0, rolls):
 		var item: DroppedItem = _get_random_roll(total_chance);  
-		SceneManager.current_scene.call_deferred("add_child", item);
+		LevelManager.current_scene.call_deferred("add_child", item);
 		# TODO
 	
 	pass;
