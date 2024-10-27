@@ -32,5 +32,5 @@ func _process(delta):
 		rotation = look_input_direction.angle();
 	
 	## Follow mouse
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
-		look_at(get_global_mouse_position());
+	#if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+	#	look_at(get_global_mouse_position());
