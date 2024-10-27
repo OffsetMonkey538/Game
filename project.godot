@@ -22,8 +22,8 @@ LevelManager="*res://Scripts/level/level_manager.gd"
 GridManager="*res://Scripts/grid/grid_manager.gd"
 PlayerData="*res://Scripts/player/player_data.gd"
 Utils="*res://Scripts/utils.gd"
-LevelData="*res://Scripts/level/level_data.gd"
 HudManager="*res://Scripts/hud/hud_manager.gd"
+LevelData="*res://Scripts/level/level_data.gd"
 
 [display]
 
@@ -87,14 +87,9 @@ look_down={
 ]
 }
 
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-pointing/emulate_mouse_from_touch=false
-
 [layer_names]
 
-2d_physics/layer_1="EnemyBullets(unused rn)"
+2d_physics/layer_1="EnemyAttack"
 2d_physics/layer_2="PlayerBullets"
 2d_physics/layer_3="PlayerUpgrades"
 

@@ -1,7 +1,13 @@
 extends Node2D
 
-const speed: float = 200;
+var speed: float = 200;
 var velocity: Vector2;
+
+func _ready() -> void:
+	LevelData.upgrades.upgrade_applied.connect(func(upgrade, _level):
+		if (not upgrade == "speed"): return;
+		speed += 100;
+	);
 
 func _process(delta):
 	velocity = Vector2.ZERO;
@@ -26,5 +32,5 @@ func _process(delta):
 		rotation = look_input_direction.angle();
 	
 	## Follow mouse
-	#look_at(get_global_mouse_position());
-	#rotation_degrees += 90;
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+		look_at(get_global_mouse_position());

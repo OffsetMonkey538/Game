@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://blhva6sru1yxl"]
+[gd_scene load_steps=11 format=3 uid="uid://blhva6sru1yxl"]
 
+[ext_resource type="Texture2D" uid="uid://d3a3sx7k8uggl" path="res://Assets/Textures/GUI/overlay.png" id="1_am0ao"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_ij3g5"]
 [ext_resource type="Texture2D" uid="uid://bx5leal2gcyyt" path="res://Assets/Textures/GUI/Joystick/Outline.png" id="2_2agc7"]
 [ext_resource type="Texture2D" uid="uid://dhunw3yxds5pm" path="res://Assets/Textures/GUI/Joystick/Tip.png" id="3_t2ofo"]
 [ext_resource type="Script" path="res://Scripts/component/bar/xp_bar.gd" id="4_xw4c3"]
-[ext_resource type="Texture2D" uid="uid://bhg6o6l2epg4q" path="res://Assets/Textures/Sprites/Wall.png" id="5_nlycg"]
-[ext_resource type="Script" path="res://Scripts/tmp_script.gd" id="6_7i4wr"]
+[ext_resource type="Script" path="res://Scripts/hud/coins_display.gd" id="5_noufc"]
+[ext_resource type="Texture2D" uid="uid://cdsrlpfgucrqn" path="res://Assets/Textures/Item/coin.png" id="5_ye0hf"]
+[ext_resource type="Script" path="res://Scripts/component/bar/player_health_bar.gd" id="7_as6re"]
+[ext_resource type="Texture2D" uid="uid://b7cffqbg2mnw7" path="res://Assets/Textures/GUI/StartButton.png" id="9_x5v0r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_whyt3"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -86,24 +91,112 @@ offset_bottom = 48.0
 pivot_offset = Vector2(48, 48)
 texture = ExtResource("3_t2ofo")
 
-[node name="MyProgressBar" type="TextureProgressBar" parent="InGameHUD"]
+[node name="XpBar" type="TextureProgressBar" parent="InGameHUD"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -156.0
-offset_top = 17.0
-offset_right = 157.0
-offset_bottom = 53.0
+offset_left = -130.0
+offset_top = 18.0
+offset_right = 130.0
+offset_bottom = 54.0
 grow_horizontal = 2
 script = ExtResource("4_xw4c3")
 
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(586, 51)
-scale = Vector2(6.6, 6.2)
-texture_normal = ExtResource("5_nlycg")
-script = ExtResource("6_7i4wr")
+[node name="CoinsDisplay" type="HBoxContainer" parent="InGameHUD"]
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 156.0
+offset_bottom = 39.0
+scale = Vector2(1.3, 1.3)
+script = ExtResource("5_noufc")
 
-[connection signal="pressed" from="TouchScreenButton" to="TouchScreenButton" method="_on_pressed"]
+[node name="TextureRect" type="TextureRect" parent="InGameHUD/CoinsDisplay"]
+layout_mode = 2
+texture = ExtResource("5_ye0hf")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="InGameHUD/CoinsDisplay"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_whyt3")
+
+[node name="HealthBar" type="TextureProgressBar" parent="InGameHUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 24.0
+offset_right = -10.0045
+offset_bottom = 48.0
+grow_horizontal = 0
+stretch_margin_bottom = 3
+script = ExtResource("7_as6re")
+
+[node name="LevelupHUD" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Overlay" type="TextureRect" parent="LevelupHUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_am0ao")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelupHUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Levelup Text" type="Label" parent="LevelupHUD/VBoxContainer"]
+layout_mode = 2
+text = "Level up
+
+choose one of these rewards"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelupHUD/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Upgrades" type="HBoxContainer" parent="LevelupHUD/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Upgrade1Button" type="Button" parent="LevelupHUD/VBoxContainer/MarginContainer/Upgrades"]
+custom_minimum_size = Vector2(88, 221)
+layout_mode = 2
+text = "Upgrade 1"
+
+[node name="Upgrade2Button" type="Button" parent="LevelupHUD/VBoxContainer/MarginContainer/Upgrades"]
+custom_minimum_size = Vector2(88, 221)
+layout_mode = 2
+text = "Upgrade 2"
+
+[node name="Upgrade3Button" type="Button" parent="LevelupHUD/VBoxContainer/MarginContainer/Upgrades"]
+custom_minimum_size = Vector2(88, 221)
+layout_mode = 2
+text = "Upgrade 3"
+
+[node name="RestartButton" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -36.0
+offset_right = 68.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("9_x5v0r")
 
 [editable path="InGameHUD/JoySticks/LeftJoystick"]
 [editable path="InGameHUD/JoySticks/RightJoystick"]

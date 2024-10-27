@@ -16,8 +16,5 @@ func pickup_upgrade(upgradeBox: HurtboxComponent):
 		return;
 	if (upgrade.item_name == "coin"):
 		#TODO: Increment some LevelData instead and once player dies, add that to the persistant PlayerData
-		LevelData.coins += 1;
+		LevelData.add_coins(1);
 		return;
-	if (upgrade.item_name == "modifier"):
-		return;
-	

@@ -7,6 +7,13 @@ var player: Node = null;
 func _ready():
 	_deferred_goto_scene("res://Scenes/level.tscn");
 
+func unload_scene():
+	call_deferred("_deferred_unload_scene")
+	
+func _deferred_unload_scene():
+	Utils.deferr_free_node(current_scene);
+	current_scene = null;
+
 func goto_scene(path: String):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.

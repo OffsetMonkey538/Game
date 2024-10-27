@@ -12,6 +12,7 @@ func _ready():
 	
 	if (health_component): health_component.ready.connect(func():
 		value = health_component.health;
+		max_value = health_component.max_health;
 		label.text = str(value);
 	);
 	
