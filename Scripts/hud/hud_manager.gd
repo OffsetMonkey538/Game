@@ -14,7 +14,7 @@ func _ready() -> void:
 func hide_joysticks():
 	for joystick: VirtualJoystick in JoySticks.find_children("*Joystick", "VirtualJoystick", false):
 		joystick._reset();
-	JoySticks.hide();
+		joystick.hide()
 	JoySticks.process_mode = PROCESS_MODE_DISABLED;
 
 func show_joysticks():
