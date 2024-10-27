@@ -7,3 +7,6 @@ func _ready():
 	LevelData.coins_changed.connect(func(_old_value: int, new_value: int):
 		label.text = str(new_value);
 	);
+
+func reset():
+	label.text = "0";

@@ -34,6 +34,6 @@ func on_restart():
 	LevelData.reset();
 	LevelManager._deferred_goto_scene("res://Scenes/level.tscn");
 	RestartButton.hide();
-	CoinsDisplay._ready();
+	CoinsDisplay.reset();
 	XpBar.reset();
 	get_node("/root/Main").print_tree_pretty()
