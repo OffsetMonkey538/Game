@@ -19,5 +19,6 @@ func _ready() -> void:
 	death.connect(func():
 		LevelManager.unload_scene();
 		HudManager.RestartButton.show();
+		HudManager.hide_joysticks();
 	);
 	

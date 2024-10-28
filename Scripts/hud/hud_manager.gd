@@ -19,7 +19,6 @@ func hide_joysticks():
 
 func show_joysticks():
 	JoySticks.process_mode = PROCESS_MODE_INHERIT;
-
 	
 func display_levelup_hud():
 	LevelupHUD.show();
@@ -36,4 +35,5 @@ func on_restart():
 	RestartButton.hide();
 	CoinsDisplay.reset();
 	XpBar.reset();
+	show_joysticks();
 	get_node("/root/Main").print_tree_pretty()
