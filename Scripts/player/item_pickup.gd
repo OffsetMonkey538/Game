@@ -1,11 +1,9 @@
-extends Node
+extends Area2D
 
 var upgrades: Array = [];
 
-@export var hit_box_component: HitBoxComponent;
-
 func _ready():
-	hit_box_component.hit.connect(Callable(self, "pickup_upgrade"));
+	area_entered.connect(Callable(self, "pickup_upgrade"));
 
 func pickup_upgrade(upgradeBox: HurtboxComponent):
 	var upgrade: DroppedItem = upgradeBox.get_parent();

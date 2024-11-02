@@ -34,3 +34,5 @@ func _deferred_goto_scene(path: String):
 	current_scene = scene.instantiate();
 	
 	get_node("/root/Main/World").add_child(current_scene);
+	
+	player = current_scene.get_node("Player");

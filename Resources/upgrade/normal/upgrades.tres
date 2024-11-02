@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradesStorageResource" load_steps=7 format=3 uid="uid://plo3303xxtit"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade/resource/UpgradesStorageResource.gd" id="1_4gsq6"]
+[ext_resource type="Resource" uid="uid://bx8mvyahyul8r" path="res://Resources/upgrade/normal/damage.tres" id="2_qigpx"]
+[ext_resource type="Resource" uid="uid://1ygoq7rwvf3" path="res://Resources/upgrade/normal/max_health.tres" id="3_reapd"]
+[ext_resource type="Resource" uid="uid://dg5r55uddnify" path="res://Resources/upgrade/normal/shoot_speed.tres" id="4_jyh5p"]
+[ext_resource type="Resource" uid="uid://dcm2rrcjjnmf5" path="res://Resources/upgrade/normal/speed.tres" id="5_ns5ih"]
+[ext_resource type="Resource" uid="uid://ca0eh1bft7efu" path="res://Resources/upgrade/normal/piercing.tres" id="6_71k3q"]
+
+[resource]
+script = ExtResource("1_4gsq6")
+value = Array[Resource("res://Scripts/upgrade/resource/UpgradeResource.gd")]([ExtResource("2_qigpx"), ExtResource("3_reapd"), ExtResource("4_jyh5p"), ExtResource("5_ns5ih"), ExtResource("6_71k3q")])

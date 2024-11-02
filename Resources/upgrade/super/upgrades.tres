@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="UpgradesStorageResource" load_steps=3 format=3 uid="uid://bo01ac6ucicj0"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade/resource/UpgradesStorageResource.gd" id="1_g72xf"]
+[ext_resource type="Resource" uid="uid://coss01e24qek2" path="res://Resources/upgrade/super/multishot.tres" id="2_3wbkk"]
+
+[resource]
+script = ExtResource("1_g72xf")
+value = Array[Resource("res://Scripts/upgrade/resource/UpgradeResource.gd")]([ExtResource("2_3wbkk")])

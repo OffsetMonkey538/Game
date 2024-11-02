@@ -4,14 +4,16 @@ class_name HitBoxComponent extends Area2D
 
 signal hit(by: HurtboxComponent);
 
-func _init():
-	area_entered.connect(hurtbox_entered);
-	monitorable = false;
+var counterSeconds: float = 0;
 
-func hurtbox_entered(area: Area2D):
+func _ready() -> void:
+	monitoring = false;
+
+func hurtbox_entered(area: Area2D) -> void:
 	if not area is HurtboxComponent: return;
+	if area.get_parent().is_queued_for_deletion(): return;
 	if get_parent().is_queued_for_deletion(): return;
 	
 	hit.emit(area);
 	
-	if health_component: health_component.damage(area.damage);
+	if (health_component): health_component.damage(area.damage);

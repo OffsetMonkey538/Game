@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://dus0n4vh864jj"]
+
+[ext_resource type="Script" path="res://Scripts/enemy/boss_enemy.gd" id="1_5i5em"]
+[ext_resource type="Texture2D" uid="uid://cmi530xpkjjs2" path="res://Assets/Textures/Sprites/Enemy.png" id="1_pwn1b"]
+[ext_resource type="Script" path="res://Scripts/component/bar/health_bar.gd" id="2_8b2pa"]
+[ext_resource type="Material" uid="uid://kx81egrxb7fb" path="res://Assets/Materials/boss_enemy.tres" id="2_hmdml"]
+[ext_resource type="Script" path="res://Scripts/component/health/health_component.gd" id="3_exshm"]
+[ext_resource type="Script" path="res://Scripts/component/movement/velocity_component.gd" id="5_p8o5u"]
+[ext_resource type="Script" path="res://Scripts/component/movement/ranged_pathfind_component.gd" id="6_gweov"]
+[ext_resource type="Script" path="res://Scripts/component/hithurt/hitbox_component.gd" id="7_xef1i"]
+[ext_resource type="PackedScene" uid="uid://dr0bw6exgpsnu" path="res://Scenes/projectile/projectile_manager.tscn" id="8_t1t6e"]
+[ext_resource type="Script" path="res://Scripts/component/loot/loot_table_component.gd" id="10_a4432"]
+[ext_resource type="PackedScene" uid="uid://beekxqoyegf6q" path="res://Scenes/projectile/simple_enemy/simple_projectile_shooter.tscn" id="10_bi2u2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mced2"]
+radius = 4.5
+height = 9.5
+
+[node name="BossEnemy" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_5i5em")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_hmdml")
+rotation = 1.57079
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_pwn1b")
+
+[node name="HealthBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("health_component", "velocity_component")]
+offset_left = -28.0
+offset_top = -32.0
+offset_right = 28.0
+offset_bottom = -24.0
+pivot_offset = Vector2(28, 32)
+script = ExtResource("2_8b2pa")
+health_component = NodePath("../HealthComponent")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_exshm")
+max_health = 50
+
+[node name="PathfindComponent" type="Node2D" parent="." node_paths=PackedStringArray("velocity_component")]
+script = ExtResource("6_gweov")
+velocity_component = NodePath("../VelocityComponent")
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("5_p8o5u")
+max_speed = 175.0
+instant = true
+
+[node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("7_xef1i")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-1.5, 0)
+scale = Vector2(3.5, 3.5)
+shape = SubResource("CapsuleShape2D_mced2")
+
+[node name="ProjectileManager" parent="." instance=ExtResource("8_t1t6e")]
+
+[node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("10_bi2u2")]
+
+[node name="LootTableComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("10_a4432")
+loot_table = {
+"coin": 50,
+"xp": 50
+}
+rolls = 3
+health_component = NodePath("../HealthComponent")

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://bx8mvyahyul8r"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade/resource/UpgradeResource.gd" id="1_2jpns"]
+[ext_resource type="Script" path="res://Scripts/upgrade/resource/UpgradeModifierResource.gd" id="1_dsa52"]
+
+[sub_resource type="Resource" id="Resource_tg1xg"]
+script = ExtResource("1_dsa52")
+name = "damage"
+value = 2.0
+
+[resource]
+script = ExtResource("1_2jpns")
+name = "Damage"
+max_level = -1
+effect = Array[ExtResource("1_dsa52")]([SubResource("Resource_tg1xg")])

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SuperUpgradeResource" load_steps=6 format=3 uid="uid://coss01e24qek2"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade/resource/SuperUpgradeResource.gd" id="1_ianwp"]
+[ext_resource type="Script" path="res://Scripts/upgrade/resource/UpgradeModifierResource.gd" id="1_jw6jx"]
+[ext_resource type="Resource" uid="uid://b417ewgqo2nrw" path="res://Resources/upgrade/unlock/multishot.tres" id="3_1davj"]
+
+[sub_resource type="Resource" id="Resource_hx7b6"]
+script = ExtResource("1_jw6jx")
+name = "bullet_count"
+value = 2.0
+
+[sub_resource type="Resource" id="Resource_4dswf"]
+script = ExtResource("1_jw6jx")
+name = "bullet_spread"
+value = 40.0
+
+[resource]
+script = ExtResource("1_ianwp")
+unlock = ExtResource("3_1davj")
+name = "Multishot"
+max_level = 0
+effect = Array[ExtResource("1_jw6jx")]([SubResource("Resource_hx7b6"), SubResource("Resource_4dswf")])

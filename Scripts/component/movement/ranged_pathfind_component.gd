@@ -1,4 +1,4 @@
-class_name PathfindComponent extends Node2D
+class_name RangedPathfindComponent extends Node2D
 
 @export var velocity_component: VelocityComponent;
 @export var grid_object_component: GridObjectComponent;
@@ -6,6 +6,7 @@ class_name PathfindComponent extends Node2D
 @export var separation_distance: float = 40;
 @export var separation_weight: float = 0.6;
 @export var target_weight: float = 0.5;
+@export var target_separation_distance: float = 150;
 
 var target: Node2D;
 
@@ -13,6 +14,7 @@ var target: Node2D;
 func _process(_delta):
 	if (grid_object_component): velocity_component.set_target(_calculateFlockDirection());
 	else: velocity_component.set_target(_get_target_velocity());
+	if (target): rotation = (target.global_position - global_position).normalized().angle();
 
 func _calculateFlockDirection():
 	var thisGlobalPosition = global_position;
@@ -48,5 +50,10 @@ func _get_target_velocity() -> Vector2:
 		push_error("No target!");
 		return Vector2.ZERO;
 	var desiredDirection = (target.global_position - global_position);
-		
-	return desiredDirection * velocity_component.max_speed;
+	var distance_to_target = desiredDirection.length();
+	
+	var speed_factor = 0;
+	if distance_to_target < target_separation_distance: speed_factor = 0.01;
+	else: speed_factor = clamp((distance_to_target - separation_distance) / (detection_distance - separation_distance), 0, 1);
+	
+	return desiredDirection.normalized() * velocity_component.max_speed * speed_factor;

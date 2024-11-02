@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d0kws1j1164n0"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/hue_shift.gdshader" id="1_uqfmp"]
+
+[resource]
+shader = ExtResource("1_uqfmp")
+shader_parameter/hue_shift = 0.0

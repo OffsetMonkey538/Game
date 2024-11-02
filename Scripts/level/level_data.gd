@@ -5,13 +5,20 @@ var xp_level: int = 0;
 
 var coins: int = 0;
 
-var upgrades: UpgradeManager = UpgradeManager.new();
+var difficulty_multiplier: float = 1;
+
+var upgrades: UpgradeManager;
 
 signal xp_changed(old_value: float, new_value: float);
 signal xp_level_changed(old_value: float, new_value: float);
 signal level_up();
 
 signal coins_changed(old_value: int, new_value: int);
+
+func _init() -> void:
+	Callable(func():
+		upgrades = UpgradeManager.new();
+	).call_deferred()
 
 func add_coins(amount: int):
 	var old_value: int = coins;
@@ -45,4 +52,7 @@ func reset():
 	xp = 0;
 	xp_level = 0;
 	coins = 0;
-	upgrades = UpgradeManager.new();
+	Callable(func():
+		upgrades = UpgradeManager.new();
+	).call_deferred()
+	difficulty_multiplier = 1;

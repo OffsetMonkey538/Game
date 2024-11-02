@@ -56,6 +56,14 @@ func set_max_health(amount: int):
 	max_health = amount;
 	max_health_changed.emit(old_max_health, max_health)
 	
+func set_health(amount: int):
+	var old_health: int = get_health();
+	health = amount;
+	health_changed.emit(old_health, health);
+	
+func set_both(amount: int):
+	set_max_health(amount);
+	set_health(amount);
 
 func get_max_health() -> int:
 	return max_health;

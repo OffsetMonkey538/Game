@@ -23,3 +23,4 @@ func _ready():
 func reset():
 	value = 0;
 	label.text = "0";
+	max_value = LevelData.get_xp_for_next_level();

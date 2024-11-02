@@ -2,12 +2,8 @@ extends Node2D
 
 var speed: float = 200;
 var velocity: Vector2;
-
-func _ready() -> void:
-	LevelData.upgrades.upgrade_applied.connect(func(upgrade, _level):
-		if (not upgrade == "speed"): return;
-		speed += 100;
-	);
+@onready var health: PlayerHealthComponent = $PlayerHealthComponent;
+@onready var shooter: ProjectileShooter = $ProjectileManager/SimpleProjectileShooter;
 
 func _process(delta):
 	velocity = Vector2.ZERO;
@@ -23,14 +19,13 @@ func _process(delta):
 	position += velocity * delta;
 	
 	
-	
-	## TODO: this should be configurable tghrough a settings thing once that exists
-	
 	# Controller and on screen joysticks
 	var look_input_direction = Input.get_vector("look_left", "look_right", "look_up", "look_down");
 	if look_input_direction != Vector2.ZERO:
 		rotation = look_input_direction.angle();
 	
-	## Follow mouse
-	#if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
-	#	look_at(get_global_mouse_position());
+	if (!OS.has_feature("pc")): return;
+	
+	# Follow mouse
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+		look_at(get_global_mouse_position());

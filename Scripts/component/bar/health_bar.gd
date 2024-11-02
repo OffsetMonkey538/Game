@@ -11,9 +11,9 @@ func _ready():
 	if (health_component): health_component.max_health_changed.connect(func(_old_value, new_value): _on_max_value_changed(new_value));
 	
 	if (health_component): health_component.ready.connect(func():
-		value = health_component.health;
 		max_value = health_component.max_health;
-		label.text = str(value);
+		value = max_value;
+		label.text = str(max_value);
 	);
 	
 	texture_progress = preload("res://Assets/Textures/GUI/ProgressBar/health.png")

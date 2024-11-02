@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://b2n8pu88uel4m"]
 
+[ext_resource type="Material" uid="uid://d0kws1j1164n0" path="res://Assets/Materials/basic_enemy.tres" id="1_qbn4n"]
 [ext_resource type="Texture2D" uid="uid://cmi530xpkjjs2" path="res://Assets/Textures/Sprites/Enemy.png" id="1_sq324"]
+[ext_resource type="Script" path="res://Scripts/enemy/enemy.gd" id="1_yx60x"]
 [ext_resource type="Script" path="res://Scripts/component/bar/health_bar.gd" id="2_kiviw"]
 [ext_resource type="Script" path="res://Scripts/component/health/health_component.gd" id="3_a4ofv"]
 [ext_resource type="Script" path="res://Scripts/component/movement/pathfind_component.gd" id="4_yyj8f"]
 [ext_resource type="Script" path="res://Scripts/component/movement/velocity_component.gd" id="5_1d6sb"]
 [ext_resource type="Script" path="res://Scripts/component/grid/grid_object_component.gd" id="6_fjpan"]
 [ext_resource type="Script" path="res://Scripts/component/hithurt/hitbox_component.gd" id="7_lunam"]
-[ext_resource type="PackedScene" uid="uid://dr0bw6exgpsnu" path="res://Scenes/projectile/projectile_manager.tscn" id="8_4g4nj"]
-[ext_resource type="PackedScene" uid="uid://b2sdkbad4nebq" path="res://Scenes/projectile/simple/simple_projectile_shooter.tscn" id="9_73pl2"]
 [ext_resource type="Script" path="res://Scripts/component/loot/loot_table_component.gd" id="10_46svb"]
 [ext_resource type="Script" path="res://Scripts/component/hithurt/hurtbox_component.gd" id="11_14v12"]
 
@@ -17,8 +17,10 @@ radius = 4.5
 height = 9.5
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_yx60x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_qbn4n")
 rotation = 1.57079
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("1_sq324")
@@ -35,21 +37,23 @@ velocity_component = NodePath("../VelocityComponent")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_a4ofv")
+max_health = 5
 
 [node name="PathfindComponent" type="Node2D" parent="." node_paths=PackedStringArray("velocity_component", "grid_object_component")]
 script = ExtResource("4_yyj8f")
 velocity_component = NodePath("../VelocityComponent")
 grid_object_component = NodePath("../GridObjectComponent")
+separation_distance = 60.0
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("5_1d6sb")
-max_speed = 175.0
+max_speed = 150.0
 
 [node name="GridObjectComponent" type="Node2D" parent="."]
 script = ExtResource("6_fjpan")
 
 [node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("7_lunam")
 health_component = NodePath("../HealthComponent")
@@ -59,21 +63,16 @@ position = Vector2(-1.5, 0)
 scale = Vector2(3.5, 3.5)
 shape = SubResource("CapsuleShape2D_mced2")
 
-[node name="ProjectileManager" parent="." instance=ExtResource("8_4g4nj")]
-
-[node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("9_73pl2")]
-
 [node name="LootTableComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("10_46svb")
 loot_table = {
-"coin": 50,
-"xp": 50
+"coin": 10,
+"xp": 90
 }
-rolls = 3
+rolls = 5
 health_component = NodePath("../HealthComponent")
 
 [node name="HurtboxComponent" type="Area2D" parent="."]
-collision_mask = 0
 script = ExtResource("11_14v12")
 damage = 1
 
