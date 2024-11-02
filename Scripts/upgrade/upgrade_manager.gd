@@ -1,4 +1,4 @@
-class_name UpgradeManager extends RefCounted
+class_name UpgradeManager extends Object
 
 ## String to UpgradeResource
 var all_upgrades: Dictionary = {};
@@ -129,6 +129,7 @@ func upgrade_upgrade_super(upgrade: String) -> void:
 	for effect in upgrade_resource.effect:
 		apply_effect(upgrade, effect);
 	
+	all_upgrades.erase(upgrade);
 	if (upgrade_resource.unlock == null): return;
 	
 	all_upgrades[upgrade_resource.unlock.name] = upgrade_resource.unlock;

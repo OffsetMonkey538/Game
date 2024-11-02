@@ -5,16 +5,15 @@ var projectile_shooters: Dictionary = {};
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# todo: fixme: all isn't correct. Use "for name in names"
-	find_children("*", "ProjectileShooter").all(func(child: ProjectileShooter):
+	for child in find_children("*", "ProjectileShooter"):
 		addProjectileShooter(child);
 		child.shoot_speed_changed.connect(func(old_speed):
 			remove_projectile_shooter(child, old_speed);
 			addProjectileShooter(child);
 		);
-	);
 
 func _process(delta: float) -> void:
+	print(projectile_shooters);
 	for interval in projectile_shooters.keys():
 		var shooters_array: Array = projectile_shooters.get(interval);
 		shooters_array[0] += delta;
@@ -31,7 +30,6 @@ func _process(delta: float) -> void:
 
 
 func addProjectileShooter(projectile_shooter: ProjectileShooter) -> void:
-	add_child(projectile_shooter);
 	var shoot_speed: float = projectile_shooter.shootSpeedSeconds;
 	
 	if not projectile_shooters.has(shoot_speed):
@@ -50,3 +48,4 @@ func remove_projectile_shooter(projectile_shooter: ProjectileShooter, from_speed
 		return;
 	
 	projectile_shooters[from_speed].erase(projectile_shooter);
+	if (projectile_shooters[from_speed].size() <= 1): projectile_shooters.erase(from_speed);

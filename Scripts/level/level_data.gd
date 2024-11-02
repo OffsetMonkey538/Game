@@ -52,6 +52,7 @@ func reset():
 	xp = 0;
 	xp_level = 0;
 	coins = 0;
+	upgrades.free();
 	Callable(func():
 		upgrades = UpgradeManager.new();
 	).call_deferred()

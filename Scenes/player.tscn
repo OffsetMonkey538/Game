@@ -31,10 +31,9 @@ position_smoothing_enabled = true
 [node name="ProjectileManager" parent="." instance=ExtResource("3_qpa60")]
 
 [node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("4_hxhoy")]
-shootSpeedSeconds = 2.0
 projectileBaseCount = 1
 projectileMultishotRangeDegrees = 0.0
-damage = 1.0
+damage = 2.0
 
 [node name="ItemPickup" type="Area2D" parent="."]
 collision_layer = 0
