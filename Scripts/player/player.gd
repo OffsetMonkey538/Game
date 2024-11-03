@@ -3,6 +3,7 @@ extends Node2D
 @onready var velocity: VelocityComponent = $VelocityComponent;
 @onready var health: PlayerHealthComponent = $PlayerHealthComponent;
 @onready var shooter: ProjectileShooter = $ProjectileManager/SimpleProjectileShooter;
+@onready var enemy_spawner: EnemySpawner = $EnemySpawner; 
 var my_rotation: float = 0;
 
 func _ready() -> void:

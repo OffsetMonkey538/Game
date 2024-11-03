@@ -18,10 +18,8 @@ script = ExtResource("1_1u4pb")
 script = ExtResource("3_gu4by")
 enemy = ExtResource("3_kuuil")
 target = NodePath("..")
-initial_spawn_frequency_seconds = 15.0
-tiers = {
-150: 3
-}
+spawn_frequency_seconds = 15.0
+spawn_amount = 3
 
 [node name="SpawnTimer" type="Timer" parent="Player" node_paths=PackedStringArray("target")]
 wait_time = 60.0

@@ -2,12 +2,9 @@ class_name EnemySpawner extends Node2D
 
 @export var enemy: PackedScene;
 @export var target: Node2D;
-@export var initial_spawn_frequency_seconds: float = 1.5;
+@export var spawn_frequency_seconds: float = 1;
+@export var spawn_amount: int = 1;
 
-## Int radius to Int amount
-@export var tiers: Dictionary = {};
-
-@onready var spawn_frequency_seconds: float = initial_spawn_frequency_seconds;
 var _time: float = 0;
 
 func _ready() -> void:
@@ -27,8 +24,7 @@ func _process(_delta) -> void:
 		spawnEnemies(18, 250);
 
 func spawnRings():
-	for key in tiers:
-		spawnEnemies(tiers[key], key);
+	spawnEnemies(spawn_amount, 150);
 	
 func spawnEnemies(amount: int, radius: float):
 	var radians_per_enemy: float = TAU / amount;
@@ -40,3 +36,7 @@ func spawnEnemies(amount: int, radius: float):
 		new_enemy.find_children("PathfindComponent").all(func(pathfind): pathfind.target = target);
 		
 		LevelManager.current_scene.add_child.call_deferred(new_enemy);
+
+func set_frequency(new_frequency: float):
+	spawn_frequency_seconds = new_frequency;
+	_time = minf(_time, spawn_frequency_seconds);

@@ -24,4 +24,6 @@ func _try_increment() -> void:
 
 func on_increment() -> void:
 	enemy_material.set_shader_parameter("hue_shift", fmod(timeth * 0.05, 1));
+	LevelManager.player.enemy_spawner.spawn_amount = 6 * LevelData.difficulty_multiplier + 3;
+	LevelManager.player.enemy_spawner.set_frequency(max(5, -2 * LevelData.difficulty_multiplier + 15));
 
