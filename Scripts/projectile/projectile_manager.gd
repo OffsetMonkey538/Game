@@ -13,7 +13,6 @@ func _ready():
 		);
 
 func _process(delta: float) -> void:
-	print(projectile_shooters);
 	for interval in projectile_shooters.keys():
 		var shooters_array: Array = projectile_shooters.get(interval);
 		shooters_array[0] += delta;

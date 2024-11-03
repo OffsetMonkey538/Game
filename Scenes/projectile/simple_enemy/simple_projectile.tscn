@@ -22,7 +22,7 @@ shape = SubResource("RectangleShape2D_uwldm")
 
 [node name="ConstantMovementComponent" type="Node" parent="."]
 script = ExtResource("3_j8uwa")
-speed = 250.0
+speed = Vector2(300, 0)
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 2.0

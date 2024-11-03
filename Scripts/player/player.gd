@@ -1,31 +1,38 @@
 extends Node2D
 
-var speed: float = 200;
-var velocity: Vector2;
+@onready var velocity: VelocityComponent = $VelocityComponent;
 @onready var health: PlayerHealthComponent = $PlayerHealthComponent;
 @onready var shooter: ProjectileShooter = $ProjectileManager/SimpleProjectileShooter;
+var my_rotation: float = 0;
 
-func _process(delta):
-	velocity = Vector2.ZERO;
+func _ready() -> void:
+	velocity.process_mode = PROCESS_MODE_DISABLED;
+
+func _process(_delta) -> void:
+	velocity.target_velocity = Vector2.ZERO;
 	
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down");
 	
 	if direction != Vector2.ZERO:
-		velocity += direction;
+		velocity.target_velocity += direction;
 	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed;
+	if velocity.target_velocity.length() > 0:
+		velocity.target_velocity = velocity.target_velocity.normalized() * velocity.max_speed;
 	
-	position += velocity * delta;
+	# Tell velocity component to do movement
+	velocity._process(_delta);
 	
+	# Override its rotation after that
+	#rotation = my_rotation;
 	
 	# Controller and on screen joysticks
 	var look_input_direction = Input.get_vector("look_left", "look_right", "look_up", "look_down");
 	if look_input_direction != Vector2.ZERO:
-		rotation = look_input_direction.angle();
+		my_rotation = look_input_direction.angle();
 	
-	if (!OS.has_feature("pc")): return;
+	if (OS.has_feature("pc")):
+		# Follow mouse
+		if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+			my_rotation = global_position.angle_to_point(get_global_mouse_position())
 	
-	# Follow mouse
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
-		look_at(get_global_mouse_position());
+	rotation = my_rotation;

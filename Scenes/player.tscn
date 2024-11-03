@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://v16cutj42oso"]
+[gd_scene load_steps=11 format=3 uid="uid://v16cutj42oso"]
 
 [ext_resource type="Texture2D" uid="uid://bap8eby4mggdc" path="res://Assets/Textures/Sprites/Player.png" id="1_8dltt"]
 [ext_resource type="Script" path="res://Scripts/player/player.gd" id="1_47u6i"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/player/item_pickup.gd" id="5_sf56c"]
 [ext_resource type="Script" path="res://Scripts/component/health/player_health_component.gd" id="6_7p5la"]
 [ext_resource type="Script" path="res://Scripts/component/hithurt/player_hitbox_component.gd" id="7_k1l4a"]
+[ext_resource type="Script" path="res://Scripts/component/movement/velocity_component.gd" id="8_ojf8h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itfrd"]
 radius = 20.0
@@ -56,3 +57,7 @@ health_component = NodePath("../PlayerHealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitboxComponent"]
 position = Vector2(-1.7, 0)
 shape = SubResource("CapsuleShape2D_rgkeb")
+
+[node name="VelocityComponent" type="Node" parent="."]
+script = ExtResource("8_ojf8h")
+instant = true

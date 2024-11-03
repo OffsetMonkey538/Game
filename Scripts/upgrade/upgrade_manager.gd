@@ -93,13 +93,11 @@ func get_available_upgrades_normal() -> Array[String]:
 		
 		if ((max_level - current_upgrades.get(key, 0)) <= 0):
 			result.erase(key);
-	print(result)
 	return result;
 func get_available_upgrades_super() -> Array[String]: 
 	var result: Array[String] = super_upgrades.duplicate();
 	for key in current_upgrades:
 		result.erase(key);
-	print(result)
 	return result;
 
 func upgrade_upgrade(upgrade: String) -> void:
@@ -140,7 +138,7 @@ func apply_effect(upgrade_name: String, effect: UpgradeModifierResource) -> void
 	match effect.name:
 		"health": LevelManager.player.health.heal(effect.value);
 		"max_health": LevelManager.player.health.add_max_health(effect.value);
-		"speed": LevelManager.player.speed += effect.value;
+		"speed": LevelManager.player.velocity.max_speed += effect.value;
 		"damage": LevelManager.player.shooter.damage += effect.value;
 		"shoot_speed": LevelManager.player.shooter.set_shoot_speed(LevelManager.player.shooter.shootSpeedSeconds + effect.value);
 		"piercing": LevelManager.player.shooter.piercing += effect.value;

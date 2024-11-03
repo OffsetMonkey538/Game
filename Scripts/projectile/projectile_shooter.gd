@@ -15,7 +15,7 @@ func shootProjectiles():
 	var projectile_count: int = projectileBaseCount;
 	
 	for current_projectile in range(0, projectile_count):
-		var projectile_rotation: float = (current_projectile - (projectile_count - 1) / 2) * _projectileMultishotRangeRadians / projectile_count;
+		var projectile_rotation: float = (current_projectile - (projectile_count - 1.0) / 2.0) * _projectileMultishotRangeRadians / projectile_count;
 		shoot(projectile_rotation);
 
 func shoot(rotation_offset: float):
@@ -25,6 +25,8 @@ func shoot(rotation_offset: float):
 	new_projectile.rotation = global_rotation + rotation_offset;
 	new_projectile.find_child("PiercingComponent").piercing = piercing;
 	new_projectile.find_child("HurtboxComponent").damage = damage;
+	new_projectile.find_child("ConstantMovementComponent").speed = new_projectile.find_child("ConstantMovementComponent").speed.rotated(new_projectile.rotation);
+	new_projectile.find_child("ConstantMovementComponent").speed += get_parent().get_parent().find_child("VelocityComponent").velocity;
 	
 	LevelManager.current_scene.add_child(new_projectile);
 
