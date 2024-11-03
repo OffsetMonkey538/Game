@@ -3,10 +3,6 @@ extends Node
 var current_scene: Node = null;
 var player: Node = null;
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	_deferred_goto_scene("res://Scenes/level.tscn");
-
 func unload_scene():
 	call_deferred("_deferred_unload_scene")
 	
