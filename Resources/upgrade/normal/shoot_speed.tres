@@ -6,10 +6,10 @@
 [sub_resource type="Resource" id="Resource_orkvj"]
 script = ExtResource("1_vtyde")
 name = "shoot_speed"
-value = -0.5
+value = -0.45
 
 [resource]
 script = ExtResource("1_l7iq4")
 name = "Shoot Speed"
-max_level = 5
+max_level = 3
 effect = Array[ExtResource("1_vtyde")]([SubResource("Resource_orkvj")])

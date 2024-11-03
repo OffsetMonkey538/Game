@@ -11,5 +11,5 @@ value = 1.0
 [resource]
 script = ExtResource("1_e1lpt")
 name = "Piercing"
-max_level = -1
+max_level = 5
 effect = Array[ExtResource("1_p6vow")]([SubResource("Resource_d7eky")])
