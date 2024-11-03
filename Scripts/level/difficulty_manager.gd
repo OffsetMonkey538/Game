@@ -9,7 +9,7 @@ var timeth: int = 0;
 
 func _ready() -> void:
 	enemy_material.set_shader_parameter("hue_shift", 0.0);
-	boss_spawner.timeout.connect(func(): _try_increment())
+	boss_spawner.before_spawn.connect(func(): _try_increment())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _try_increment() -> void:

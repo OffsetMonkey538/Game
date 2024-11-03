@@ -63,6 +63,9 @@ shape = SubResource("CapsuleShape2D_mced2")
 [node name="ProjectileManager" parent="." instance=ExtResource("8_t1t6e")]
 
 [node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("10_bi2u2")]
+projectileBaseCount = 3
+projectileMultishotRangeDegrees = 0.0
+damage = 4.0
 
 [node name="LootTableComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("10_a4432")
