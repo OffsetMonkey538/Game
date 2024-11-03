@@ -144,6 +144,7 @@ func apply_effect(upgrade_name: String, effect: UpgradeModifierResource) -> void
 		"piercing": LevelManager.player.shooter.piercing += effect.value;
 		"bullet_count": LevelManager.player.shooter.projectileBaseCount += effect.value;
 		"bullet_spread": LevelManager.player.shooter.set_spread(LevelManager.player.shooter.projectileMultishotRangeDegrees + effect.value);
+		"pickup_range": LevelManager.player.pickup.scale += Vector2(effect.value, effect.value);
 		var name: push_error("Upgrade '" + upgrade_name + "' has unknown effect '"+ name + "'!");
 
 func refresh_options() -> void:

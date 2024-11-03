@@ -44,7 +44,7 @@ script = ExtResource("5_sf56c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickup"]
 position = Vector2(-2, 0)
-scale = Vector2(3.5, 3.5)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CapsuleShape2D_itfrd")
 
 [node name="PlayerHealthComponent" type="Node" parent="."]
