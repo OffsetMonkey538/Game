@@ -11,5 +11,5 @@ value = 50.0
 [resource]
 script = ExtResource("1_6yv82")
 name = "Speed"
-max_level = -1
+max_level = 5
 effect = Array[ExtResource("1_lwhvu")]([SubResource("Resource_rw0jk")])
