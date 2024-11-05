@@ -6,10 +6,10 @@
 [sub_resource type="Resource" id="Resource_uu162"]
 script = ExtResource("1_3k3wl")
 name = "pickup_range"
-value = 0.5
+value = 1.0
 
 [resource]
 script = ExtResource("1_u1i0t")
 name = "Magnet"
-max_level = 5
+max_level = 3
 effect = Array[ExtResource("1_3k3wl")]([SubResource("Resource_uu162")])

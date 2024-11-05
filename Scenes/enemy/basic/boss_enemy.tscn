@@ -46,7 +46,7 @@ velocity_component = NodePath("../VelocityComponent")
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("5_p8o5u")
-max_speed = 175.0
+max_speed = 155.0
 instant = true
 
 [node name="HitBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
@@ -63,7 +63,7 @@ shape = SubResource("CapsuleShape2D_mced2")
 [node name="ProjectileManager" parent="." instance=ExtResource("8_t1t6e")]
 
 [node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("10_bi2u2")]
-projectileBaseCount = 3
+projectileBaseCount = 1
 projectileMultishotRangeDegrees = 0.0
 damage = 4.0
 
