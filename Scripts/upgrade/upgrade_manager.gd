@@ -97,6 +97,7 @@ func get_available_upgrades_normal() -> Array[String]:
 func get_available_upgrades_super() -> Array[String]: 
 	var result: Array[String] = super_upgrades.duplicate();
 	for key in current_upgrades:
+		if (all_upgrades.has(key) && all_upgrades[key].max_level == -1): continue;
 		result.erase(key);
 	return result;
 
@@ -127,7 +128,7 @@ func upgrade_upgrade_super(upgrade: String) -> void:
 	for effect in upgrade_resource.effect:
 		apply_effect(upgrade, effect);
 	
-	all_upgrades.erase(upgrade);
+	if (all_upgrades[upgrade].max_level != -1): all_upgrades.erase(upgrade);
 	if (upgrade_resource.unlock == null): return;
 	
 	all_upgrades[upgrade_resource.unlock.name] = upgrade_resource.unlock;
@@ -145,6 +146,7 @@ func apply_effect(upgrade_name: String, effect: UpgradeModifierResource) -> void
 		"bullet_count": LevelManager.player.shooter.projectileBaseCount += effect.value;
 		"bullet_spread": LevelManager.player.shooter.set_spread(LevelManager.player.shooter.projectileMultishotRangeDegrees + effect.value);
 		"pickup_range": LevelManager.player.pickup.scale += Vector2(effect.value, effect.value);
+		"heal_max": LevelManager.player.health.heal_max();
 		var name: push_error("Upgrade '" + upgrade_name + "' has unknown effect '"+ name + "'!");
 
 func refresh_options() -> void:

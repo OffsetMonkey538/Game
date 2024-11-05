@@ -38,6 +38,15 @@ func heal(amount: int) -> void:
 	if old_health == health: return;
 	health_changed.emit(old_health, health);
 
+func heal_max() -> void:
+	if is_dead: return;
+	
+	var old_health: int = health;
+	health = get_max_health();
+	
+	if old_health == health: return
+	health_changed.emit(old_health, health);
+
 func add_max_health(amount: int):
 	var old_health: int = health;
 	var old_max_health: int = max_health;
