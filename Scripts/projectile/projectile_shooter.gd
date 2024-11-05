@@ -1,6 +1,6 @@
 class_name ProjectileShooter extends Node2D
 
-@export var shootSpeedSeconds: float = 1;
+@export var shootSpeedSeconds: float = 0;
 @export var projectileBaseCount: int = 1;
 @export var projectileMultishotRangeDegrees: float = 20;
 @export var damage: float = 10;
