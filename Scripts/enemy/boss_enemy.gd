@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite2D;
 @onready var health: HealthComponent = $HealthComponent;
-@onready var shooter: ProjectileShooter = $ProjectileManager/SimpleProjectileShooter;
+@onready var shooter: ProjectileShooter = $ProjectileShooter;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

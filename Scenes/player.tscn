@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bap8eby4mggdc" path="res://Assets/Textures/Sprites/Player.png" id="1_8dltt"]
 [ext_resource type="Script" path="res://Scripts/player/player.gd" id="1_47u6i"]
-[ext_resource type="PackedScene" uid="uid://dr0bw6exgpsnu" path="res://Scenes/projectile/projectile_manager.tscn" id="3_qpa60"]
-[ext_resource type="PackedScene" uid="uid://b2sdkbad4nebq" path="res://Scenes/projectile/simple/simple_projectile_shooter.tscn" id="4_hxhoy"]
+[ext_resource type="Script" path="res://Scripts/projectile/projectile_shooter.gd" id="3_d3sda"]
+[ext_resource type="PackedScene" uid="uid://bgq2avo12efbn" path="res://Scenes/projectile/player_projectile.tscn" id="4_2fe0m"]
 [ext_resource type="Script" path="res://Scripts/player/item_pickup.gd" id="5_sf56c"]
 [ext_resource type="Script" path="res://Scripts/component/health/player_health_component.gd" id="6_7p5la"]
 [ext_resource type="Script" path="res://Scripts/component/hithurt/player_hitbox_component.gd" id="7_k1l4a"]
@@ -29,12 +29,11 @@ texture = ExtResource("1_8dltt")
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 
-[node name="ProjectileManager" parent="." instance=ExtResource("3_qpa60")]
-
-[node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("4_hxhoy")]
-projectileBaseCount = 1
-projectileMultishotRangeDegrees = 0.0
+[node name="ProjectileShooter" type="Node2D" parent="."]
+script = ExtResource("3_d3sda")
+shootSpeed = 1.5
 damage = 2.0
+projectileScene = ExtResource("4_2fe0m")
 
 [node name="ItemPickup" type="Area2D" parent="."]
 collision_layer = 0

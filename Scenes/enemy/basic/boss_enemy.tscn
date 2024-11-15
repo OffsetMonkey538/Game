@@ -8,9 +8,9 @@
 [ext_resource type="Script" path="res://Scripts/component/movement/velocity_component.gd" id="5_p8o5u"]
 [ext_resource type="Script" path="res://Scripts/component/movement/ranged_pathfind_component.gd" id="6_gweov"]
 [ext_resource type="Script" path="res://Scripts/component/hithurt/hitbox_component.gd" id="7_xef1i"]
-[ext_resource type="PackedScene" uid="uid://dr0bw6exgpsnu" path="res://Scenes/projectile/projectile_manager.tscn" id="8_t1t6e"]
 [ext_resource type="Script" path="res://Scripts/component/loot/loot_table_component.gd" id="10_a4432"]
-[ext_resource type="PackedScene" uid="uid://beekxqoyegf6q" path="res://Scenes/projectile/simple_enemy/simple_projectile_shooter.tscn" id="10_bi2u2"]
+[ext_resource type="Script" path="res://Scripts/projectile/projectile_shooter.gd" id="11_hx2ix"]
+[ext_resource type="PackedScene" uid="uid://dyvinew6b2hsg" path="res://Scenes/projectile/enemy_projectile.tscn" id="12_n811j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mced2"]
 radius = 4.5
@@ -60,18 +60,17 @@ position = Vector2(-1.5, 0)
 scale = Vector2(3.5, 3.5)
 shape = SubResource("CapsuleShape2D_mced2")
 
-[node name="ProjectileManager" parent="." instance=ExtResource("8_t1t6e")]
-
-[node name="SimpleProjectileShooter" parent="ProjectileManager" instance=ExtResource("10_bi2u2")]
-projectileBaseCount = 1
-projectileMultishotRangeDegrees = 0.0
+[node name="ProjectileShooter" type="Node2D" parent="."]
+script = ExtResource("11_hx2ix")
+shootSpeed = 2.0
 damage = 4.0
+projectileScene = ExtResource("12_n811j")
 
 [node name="LootTableComponent" type="Node" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("10_a4432")
 loot_table = {
-"coin": 50,
-"xp": 50
+"nothing": 25,
+"xp": 75
 }
-rolls = 3
+rolls = 10
 health_component = NodePath("../HealthComponent")

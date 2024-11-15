@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var velocity: VelocityComponent = $VelocityComponent;
 @onready var health: PlayerHealthComponent = $PlayerHealthComponent;
-@onready var shooter: ProjectileShooter = $ProjectileManager/SimpleProjectileShooter;
+@onready var shooter: ProjectileShooter = $ProjectileShooter;
 @onready var pickup: CollisionShape2D = $ItemPickup/CollisionShape2D;
 @onready var enemy_spawner: EnemySpawner = $EnemySpawner; 
 var my_rotation: float = 0;

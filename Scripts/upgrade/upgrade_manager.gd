@@ -141,7 +141,7 @@ func apply_effect(upgrade_name: String, effect: UpgradeModifierResource) -> void
 		"max_health": LevelManager.player.health.add_max_health(effect.value);
 		"speed": LevelManager.player.velocity.max_speed += effect.value;
 		"damage": LevelManager.player.shooter.damage += effect.value;
-		"shoot_speed": LevelManager.player.shooter.set_shoot_speed(LevelManager.player.shooter.shootSpeedSeconds + effect.value);
+		"shoot_speed": LevelManager.player.shooter.shoot_timer.timeout += effect.value;
 		"piercing": LevelManager.player.shooter.piercing += effect.value;
 		"bullet_count": LevelManager.player.shooter.projectileBaseCount += effect.value;
 		"bullet_spread": LevelManager.player.shooter.set_spread(LevelManager.player.shooter.projectileMultishotRangeDegrees + effect.value);
