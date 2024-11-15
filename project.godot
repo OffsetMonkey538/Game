@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 LevelManager="*res://Scripts/level/level_manager.gd"
-GridManager="*res://Scripts/grid/grid_manager.gd"
 PlayerData="*res://Scripts/player/player_data.gd"
 Utils="*res://Scripts/utils.gd"
 HudManager="*res://Scripts/hud/hud_manager.gd"
