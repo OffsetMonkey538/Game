@@ -41,6 +41,7 @@ jobs:
         run: |
           echo "DATE=$(date +'%Y-%m-%dT%H-%M-%S')" >> $GITHUB_ENV
           echo "COMMIT_TITLE=$(git log -1 --pretty=%B | head -n 1)" >> $GITHUB_ENV
+          echo "COMMIT_DESCRIPTION=$(git log -1 --pretty=%B | tail -n+2)" >> $GITHUB_ENV
 
       - name: create release
         uses: ncipollo/release-action@v1.14.0
@@ -49,4 +50,5 @@ jobs:
           generateReleaseNotes: true
           tag: ${{ env.DATE }}
           name: ${{ env.COMMIT_TITLE }}
+          body: ${{ env.COMMIT_DESCRIPTION }}
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
